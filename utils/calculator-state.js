@@ -4,6 +4,7 @@ const calculatorState ={
  secondOperand: "",
  operator: null,
  expression: null,
+ // flag to cj=heck if calculation has occured
  equalFalg: false
 }
 
