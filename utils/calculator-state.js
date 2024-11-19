@@ -4,6 +4,7 @@ const calculatorState ={
  secondOperand: "",
  operator: null,
  expression: null,
+ equalFalg: false
 }
 
 export default calculatorState
