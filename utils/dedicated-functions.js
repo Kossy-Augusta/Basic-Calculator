@@ -20,11 +20,16 @@ export function displayOnScreen(...rest){
  * @returns {void} - this function does not return any value
  */
 export function pressNumber(number){
- const{firstOperand,secondOperand,operator} = calculatorState
- if(!operator){
+ const{operator,equalFalg} = calculatorState
+ if(!operator && !equalFalg){
   calculatorState.firstOperand += number
   displayOnScreen(calculatorState.firstOperand)
  }
+ else if(equalFalg){
+  calculatorState.firstOperand = number;
+  calculatorState.equalFalg = false
+  displayOnScreen(calculatorState.firstOperand);
+}
  else{
   calculatorState.secondOperand += number
   displayOnScreen(calculatorState.firstOperand, calculatorState.operator, calculatorState.secondOperand);
@@ -57,7 +62,7 @@ export function pressOperator(op){
  * @returns {void}
  */
 export function specialoperators(op){
- const { firstOperand, secondOperand, operator } = calculatorState;
+ const { firstOperand, secondOperand, operator, equalFalg} = calculatorState;
  if (op === "C") {
   if (secondOperand) {
    calculatorState.secondOperand = secondOperand.slice(0, -1);
@@ -80,17 +85,18 @@ export function specialoperators(op){
   return;
  }
  if(op === '='){
- if (firstOperand && secondOperand && operator) {
-  const result = calculate(
-   parseFloat(firstOperand),
-   parseFloat(secondOperand),
-   operator
-  );
-  calculatorState.firstOperand = result.toString();
-  calculatorState.secondOperand = "";
-  calculatorState.operator = null;
-  displayOnScreen(calculatorState.firstOperand);
- }
+  if (firstOperand && secondOperand && operator) {
+   const result = calculate(
+    parseFloat(firstOperand),
+    parseFloat(secondOperand),
+    operator
+   );
+   calculatorState.firstOperand = result.toString();
+   calculatorState.secondOperand = "";
+   calculatorState.operator = null;
+   calculatorState.equalFalg = true;
+   displayOnScreen(calculatorState.firstOperand);
+  }
   return;
  }
 }
