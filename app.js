@@ -1,5 +1,5 @@
 import getELement from "./utils/get-element.js";
-import {pressNumber, pressOperator} from "./utils/dedicated-functions.js";
+import {pressNumber, pressOperator, specialoperators} from "./utils/dedicated-functions.js";
 
 const display = getELement(".display");
 const btns = [...document.querySelectorAll(".button")];
