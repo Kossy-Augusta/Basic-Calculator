@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Enhanced Calculator</title>
+ <!-- font-awesome -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+/>
+ <!-- styles -->
+ <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+ <div class="calculator">
+ <div class="display-container">
+  <span class="history-icon" id="history-icon"><i class="fas fa-history"></i></span>
+  <div class="display" id="display">0</div>
+ </div>
+  <div class="buttons">
+   <button class="button operator" data-type="special">AC</button>
+   <button class="button operator" data-type="special">C</button>
+   <button class="button operator" data-type="operator">%</button>
+   <button class="button operator" data-type="operator">÷</button>
+   <button class="button" data-type="number">7</button>
+   <button class="button" data-type="number">8</button>
+   <button class="button" data-type="number">9</button>
+   <button class="button operator" data-type="operator">×</button>
+   <button class="button" data-type="number">4</button>
+   <button class="button" data-type="number">5</button>
+   <button class="button" data-type="number">6</button>
+   <button class="button operator" data-type="operator">−</button>
+   <button class="button" data-type="number">1</button>
+   <button class="button" data-type="number">2</button>
+   <button class="button" data-type="number">3</button>
+   <button class="button operator" data-type="operator">+</button>
+   <button class="button zero" data-type="number">0</button>
+   <button class="button" data-type="number">.</button>
+   <button class="button ans" data-type="number">Ans</button>
+   <button class="button equals" data-type="special">=</button>
+  </div>
+ </div>
+ <div class="modal" id="history-modal">
+  <div class="modal-content">
+   <h3>Calculation History</h3>
+   <ul id="history-list"></ul>
+   <button class="close-btn" id="close-modal">Close</button>
+  </div>
+ </div>
+ <script src="app.js
+ " type="module"></script>
+</body>
+</html>
