@@ -1,4 +1,5 @@
 import calculatorState from "./calculator-state.js";
+import calculate from "./calculate.js";
 
 /**
  * Updates the calculator display with the provided inputs.
