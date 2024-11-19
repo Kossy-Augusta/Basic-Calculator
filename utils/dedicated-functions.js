@@ -29,3 +29,21 @@ export function pressNumber(number){
   displayOnScreen(calculatorState.firstOperand, calculatorState.operator, calculatorState.secondOperand);
  }
 }
+
+/**
+ * Updates the value of the operator on the CalculatorState Object and
+ * ensures operator cannot be input twice in one operation
+ * 
+ * @param {string} op- operator input by user
+ * @returns {void} 
+ */
+export function pressOperator(op){
+ const { firstOperand, secondOperand, operator } = calculatorState;
+ if (!firstOperand){
+  calculatorState.firstOperand = 0
+  displayOnScreen(calculatorState.firstOperand);
+ }
+ if ((operator && !secondOperand) || (firstOperand && operator && secondOperand)) return;
+ calculatorState.operator = op
+ displayOnScreen(calculatorState.firstOperand, calculatorState.operator);
+}
