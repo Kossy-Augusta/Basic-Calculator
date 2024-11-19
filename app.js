@@ -14,5 +14,8 @@ btns.forEach((btn)=>{
   if(type === "operator"){
    pressOperator(value);
   }
+  if(type === "special"){
+   specialoperators(value)
+  }
  })
 })
