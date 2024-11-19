@@ -47,3 +47,49 @@ export function pressOperator(op){
  calculatorState.operator = op
  displayOnScreen(calculatorState.firstOperand, calculatorState.operator);
 }
+
+/**
+ * Handles specails operations like C, AC, =
+ * 
+ * @param {string} op- special operator input
+ * 
+ * @returns {void}
+ */
+export function specialoperators(op){
+ const { firstOperand, secondOperand, operator } = calculatorState;
+ if (op === "C") {
+  if (secondOperand) {
+   calculatorState.secondOperand = secondOperand.slice(0, -1);
+  }
+  else if (firstOperand && operator && !secondOperand) {
+   calculatorState.operator = null;
+  }
+  else if (firstOperand && !(operator && secondOperand)) {
+   calculatorState.firstOperand = firstOperand.slice(0, -1);
+  }
+  displayOnScreen(calculatorState.firstOperand, calculatorState.operator, calculatorState.secondOperand);
+  return;
+ }
+ if (op === "AC") {
+  calculatorState.firstOperand = "";
+  calculatorState.secondOperand = "";
+  calculatorState.operator = null;
+  calculatorState.expression = "";
+  displayOnScreen(calculatorState.expression);
+  return;
+ }
+ if(op === '='){
+ if (firstOperand && secondOperand && operator) {
+  const result = calculate(
+   parseFloat(firstOperand),
+   parseFloat(secondOperand),
+   operator
+  );
+  calculatorState.firstOperand = result.toString();
+  calculatorState.secondOperand = "";
+  calculatorState.operator = null;
+  displayOnScreen(calculatorState.firstOperand);
+ }
+  return;
+ }
+}
